@@ -138,8 +138,6 @@ class _GameSet{
   late int _local;
   late int _visitante;
   late bool tieBreak;
-  late int _localTieBreak;
-  late int _visitanteTieBreak;
   late var _juego;
   late Map<String,String> _marcadorSet;
   
@@ -148,8 +146,6 @@ class _GameSet{
     _local=0;
     _visitante=0;
     tieBreak=false;
-    _localTieBreak=0;
-    _visitanteTieBreak=0;
     _juego=_JuegoStandard();
     _marcadorSet={
       "Juegos Locales":"0",

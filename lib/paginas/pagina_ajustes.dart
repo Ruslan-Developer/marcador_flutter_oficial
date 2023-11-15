@@ -5,7 +5,7 @@ class PaginaAjustes extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    String Jugador1="Jugador1", Jugador2="Jugador 2";
+    String _jugador1="Jugador1", _jugador2="Jugador 2";
     bool partido5Sets=false;
     return Scaffold(
       appBar: AppBar(),
@@ -15,12 +15,12 @@ class PaginaAjustes extends StatelessWidget {
           TextField(
             
             decoration: InputDecoration(
-              label: Text("Jugador 1"),
+              label: Text(_jugador1),
             ),
           ),
           TextField(
             decoration: InputDecoration(
-              label: Text("Jugador 2"),
+              label: Text(_jugador2),
             ),
           ),
           Switch(value: partido5Sets, onChanged: (valor){}),
