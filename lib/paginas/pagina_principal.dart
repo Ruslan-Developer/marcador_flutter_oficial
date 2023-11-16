@@ -3,7 +3,13 @@ import 'package:marcador_flutter/paginas/pagina_ajustes.dart';
 import 'package:marcador_flutter/paginas/pagina_juego.dart';
 
 class PaginaPrincipal extends StatelessWidget {
-  const PaginaPrincipal({super.key});
+  //MAp en el que dejaremos la configuracion del juego
+  Map<String,Object> configuracion;
+
+  PaginaPrincipal({
+    super.key, required this.configuracion
+    });
+
 
   @override
   Widget build(BuildContext context) {
@@ -12,8 +18,9 @@ class PaginaPrincipal extends StatelessWidget {
         actions: [
           IconButton(
             onPressed: (){
+              //Cuando llamamos a ajustes pasamos de nuevo como parametro la configuración
               final destino=MaterialPageRoute(
-                builder:(_)=>PaginaAjustes() );
+                builder:(_)=>PaginaAjustes(configuracion: configuracion,) );
                 Navigator.push(context, destino);
             }, 
             icon: Icon(Icons.settings))
@@ -70,7 +77,8 @@ class PaginaPrincipal extends StatelessWidget {
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          final destino = MaterialPageRoute(builder: (_) => PaginaJuego());
+          //Pasamos la configuración al juego
+          final destino = MaterialPageRoute(builder: (_) => PaginaJuego(configuracion: configuracion,));
           Navigator.push(context, destino);
         },
         child: Icon(Icons.play_arrow),

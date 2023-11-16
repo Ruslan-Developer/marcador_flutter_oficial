@@ -2,11 +2,18 @@ import 'package:flutter/material.dart';
 import 'package:marcador_flutter/paginas/pagina_principal.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+  MyApp({super.key});
+
+  //Map que contendrá la informacion sobre la configuracion
+  Map<String,Object> configuracion={
+    "Jugador 1":"Chema",
+    "Jugador 2":"Jugador 2",
+    "Sets":3,
+  };
 
   // This widget is the root of your application.
   @override
@@ -19,7 +26,8 @@ class MyApp extends StatelessWidget {
     
     //progamacion declarativa flutter, pasamos los datos como parametros al widget
     return MaterialApp(
-      home: PaginaPrincipal(),
+      //Cuando llamamos a la página principal pasamos como parámetro el map de configuración
+      home: PaginaPrincipal(configuracion: configuracion,),
     );
   }
 }
