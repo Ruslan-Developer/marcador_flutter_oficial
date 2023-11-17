@@ -22,6 +22,7 @@ class PaginaPrincipal extends StatelessWidget {
               final destino=MaterialPageRoute(
                 builder:(_)=>PaginaAjustes(configuracion: configuracion,) );
                 Navigator.push(context, destino);
+               
             }, 
             icon: Icon(Icons.settings))
         ],

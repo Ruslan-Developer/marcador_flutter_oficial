@@ -76,7 +76,11 @@ class _PaginaAjustesState extends State<PaginaAjustes> {
                 ),
             ],
           ),
-
+          MaterialButton(
+            child: Text("Guardar"),
+            onPressed: (){
+            })
+          
         ],
       ),
     );

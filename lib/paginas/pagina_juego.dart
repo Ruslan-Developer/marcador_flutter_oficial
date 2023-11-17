@@ -47,14 +47,14 @@ class _PaginaJuegoState extends State<PaginaJuego> {
         padding: EdgeInsets.all(8),
         color: Colors.black,
         child:  DefaultTextStyle(
-          style: TextStyle(
+          style: const TextStyle(
             color: Colors.grey,
             fontSize: 25,
             fontWeight: FontWeight.bold,
           ),
           child:  Column(
             children: [
-              Center(
+              const Center(
                 child: Text("Marcador",
                 style: TextStyle(
                   fontSize: 40,
@@ -63,7 +63,7 @@ class _PaginaJuegoState extends State<PaginaJuego> {
               
                 ),),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 20,
               ),
               Row(
@@ -71,32 +71,32 @@ class _PaginaJuegoState extends State<PaginaJuego> {
                     Expanded(
                       child: Text(_marcador["Jugador Local"]),
                     ),
-                    SizedBox(
+                    const SizedBox(
                       width: 8,
                       ),
                     Text(_marcador["Set"][0]["Juegos Locales"]),
-                    SizedBox(
+                    const SizedBox(
                       width: 8,
                       ),
                     Text(_marcador["Set"][1]["Juegos Locales"]),
-                    SizedBox(
+                    const SizedBox(
                       width: 8,
                       ),
                     Text(_marcador["Set"][2]["Juegos Locales"]),
-                    SizedBox(
+                    const SizedBox(
                       width: 8,
                       ),
                       //si el numero de sets es 5 aumentamos los elementos a mostrar.
                     if(_numSets==5)   Text(_marcador["Set"][3]["Juegos Locales"]),
-                    if(_numSets==5)   SizedBox(width: 8,),
+                    if(_numSets==5)   const SizedBox(width: 8,),
                     if(_numSets==5)   Text(_marcador["Set"][4]["Juegos Locales"]),
-                    if(_numSets==5)   SizedBox(width: 8,),
+                    if(_numSets==5)   const SizedBox(width: 8,),
                     Container(
                       color: Colors.red,
                       height: 25,
                       width: 2,
                     ),
-                    SizedBox(
+                    const SizedBox(
                       width: 8,
                       ),
                     Text(_marcador["Puntos Locales"]),
@@ -112,42 +112,42 @@ class _PaginaJuegoState extends State<PaginaJuego> {
                     Expanded(
                       child: Text(_marcador["Jugador Visitante"]),
                     ),
-                    SizedBox(
+                    const SizedBox(
                       width: 8,
                       ),
                     Text(_marcador["Set"][0]["Juegos Visitantes"]),
-                    SizedBox(
+                    const SizedBox(
                       width: 8,
                       ),
                     Text((_marcador["Set"][1]["Juegos Visitantes"])),
-                    SizedBox(
+                    const SizedBox(
                       width: 8,
                       ),
                     Text((_marcador["Set"][2]["Juegos Visitantes"])),
-                    SizedBox(
+                    const SizedBox(
                       width: 8,
                       ),
                       if(_numSets==5)   Text(_marcador["Set"][3]["Juegos Visitantes"]),
-                    if(_numSets==5)   SizedBox(width: 8,),
+                    if(_numSets==5)   const SizedBox(width: 8,),
                     if(_numSets==5)   Text(_marcador["Set"][4]["Juegos Visitantes"]),
-                    if(_numSets==5)   SizedBox(width: 8,),
+                    if(_numSets==5)   const SizedBox(width: 8,),
                     Container(
                       color: Colors.red,
                       height: 25,
                       width: 2,
                     ),
-                    SizedBox(
+                    const SizedBox(
                       width: 8,
                       ),
                     Text(_marcador["Puntos Visitantes"]),
                 ],  
               ),
            if(_partidoFinalizado)
-                  SizedBox(
+                 const SizedBox(
                               height:40,
                           ),
             if(_partidoFinalizado)
-                Text("Partido Finalizado",
+                const Text("Partido Finalizado",
                       style: TextStyle(
                         fontSize: 30,
                         color: Colors.orange,
@@ -160,7 +160,7 @@ class _PaginaJuegoState extends State<PaginaJuego> {
         ),
       ),
        //Menú inferior 
-      bottomNavigationBar: BottomNavigationBar(items: [
+      bottomNavigationBar: BottomNavigationBar(items: const [
           //no se pueden pasar widgets, sino elementos de la clase bottonNavigationBarItem
           BottomNavigationBarItem(
             //ajuste del icono del boton inferior
@@ -175,7 +175,7 @@ class _PaginaJuegoState extends State<PaginaJuego> {
         ],
         onTap: (value) {
           if(!_partidoFinalizado)
-              switch (value) {
+             { switch (value) {
                 case 0:
                   _partidoFinalizado=partido.addLocalPoint();
                   _marcador = partido.getPartido();
@@ -188,6 +188,7 @@ class _PaginaJuegoState extends State<PaginaJuego> {
                   break;
                 default:
               }
+             }
           else{
             setState(() {
               
