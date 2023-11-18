@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:marcador_flutter/paginas/pagina_ajustes.dart';
 import 'package:marcador_flutter/paginas/pagina_juego.dart';
 
-class PaginaPrincipal extends StatelessWidget {
+class PaginaPrincipal extends StatefulWidget {
   //MAp en el que dejaremos la configuracion del juego
   Map<String,Object> configuracion;
 
@@ -10,6 +10,31 @@ class PaginaPrincipal extends StatelessWidget {
     super.key, required this.configuracion
     });
 
+  @override
+  State<PaginaPrincipal> createState() => _PaginaPrincipalState();
+}
+
+class _PaginaPrincipalState extends State<PaginaPrincipal> {
+
+  // #####################################################################
+  // ################ Para poder recibir datos de una página hija#########
+  // Necesitamos que nuestro página 1 sea de tipo StatefulWidget
+  // en la zona destinada a los estados crearemos una funcion asincrona
+  // que quedarña a la espera de recibir los datos del widget hijo
+  // ojo con los nulos que se pueden producir, ante un nulo, cargad la configuración previa
+
+  _irAPaginaConfiguracion () async{
+    //Cuando llamamos a ajustes pasamos de nuevo como parametro la configuración
+    final destino=MaterialPageRoute(
+                builder:(_)=>PaginaAjustes(configuracion: widget.configuracion,) );
+    final datoDevuelto = await Navigator.push(context, destino);
+    //si el valor devuelto por await es nulo dejamos el valor que tenia configuracion
+    setState(() {
+      widget.configuracion=datoDevuelto ?? widget.configuracion;  
+    });
+    
+
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -18,11 +43,7 @@ class PaginaPrincipal extends StatelessWidget {
         actions: [
           IconButton(
             onPressed: (){
-              //Cuando llamamos a ajustes pasamos de nuevo como parametro la configuración
-              final destino=MaterialPageRoute(
-                builder:(_)=>PaginaAjustes(configuracion: configuracion,) );
-                Navigator.push(context, destino);
-               
+              _irAPaginaConfiguracion(); 
             }, 
             icon: Icon(Icons.settings))
         ],
@@ -79,7 +100,7 @@ class PaginaPrincipal extends StatelessWidget {
       floatingActionButton: FloatingActionButton(
         onPressed: () {
           //Pasamos la configuración al juego
-          final destino = MaterialPageRoute(builder: (_) => PaginaJuego(configuracion: configuracion,));
+          final destino = MaterialPageRoute(builder: (_) => PaginaJuego(configuracion: widget.configuracion,));
           Navigator.push(context, destino);
         },
         child: Icon(Icons.play_arrow),

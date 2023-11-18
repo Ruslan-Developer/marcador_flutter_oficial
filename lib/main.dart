@@ -10,7 +10,7 @@ class MyApp extends StatelessWidget {
 
   //Map que contendrá la informacion sobre la configuracion
   Map<String,Object> configuracion={
-    "Jugador 1":"Chema",
+    "Jugador 1":"Jugador 1",
     "Jugador 2":"Jugador 2",
     "Sets":3,
   };
