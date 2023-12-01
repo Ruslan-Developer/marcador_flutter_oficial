@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:marcador_flutter/paginas/loading.dart';
 import 'package:marcador_flutter/paginas/pagina_principal.dart';
 
 void main() {
@@ -27,7 +28,8 @@ class MyApp extends StatelessWidget {
     //progamacion declarativa flutter, pasamos los datos como parametros al widget
     return MaterialApp(
       //Cuando llamamos a la página principal pasamos como parámetro el map de configuración
-      home: PaginaPrincipal(configuracion: configuracion,),
+      home: PantallaDeCarga(configuracion: configuracion,),
+      //home: PaginaPrincipal(configuracion: configuracion,),
     );
   }
 }

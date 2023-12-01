@@ -173,6 +173,8 @@ class _PaginaJuegoState extends State<PaginaJuego> {
             icon: Icon(Icons.arrow_right),
             label: "Punto Visitante"),
         ],
+        
+
         onTap: (value) {
           if(!_partidoFinalizado)
              { switch (value) {
