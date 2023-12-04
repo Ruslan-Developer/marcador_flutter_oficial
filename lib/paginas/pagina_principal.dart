@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:marcador_flutter/paginas/pagina_ajustes.dart';
+import 'package:marcador_flutter/paginas/pagina_historico.dart';
 import 'package:marcador_flutter/paginas/pagina_juego.dart';
 
 class PaginaPrincipal extends StatefulWidget {
@@ -45,8 +46,16 @@ class _PaginaPrincipalState extends State<PaginaPrincipal> {
             onPressed: (){
               _irAPaginaConfiguracion(); 
             }, 
-            icon: Icon(Icons.settings))
+            icon: Icon(Icons.settings)),
+            IconButton(
+            onPressed: (){
+              final destino=MaterialPageRoute(
+                builder:(_)=>PaginaHistorico()); 
+              Navigator.push(context, destino);
+            }, 
+            icon: Icon(Icons.list))
         ],
+        
       ),
       body: Container(
         color: Colors.white,

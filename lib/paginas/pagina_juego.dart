@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:marcador_flutter/modelo/base_datos.dart';
 import 'package:marcador_flutter/modelo/partido.dart';
 
 class PaginaJuego extends StatefulWidget {
@@ -10,6 +11,7 @@ class PaginaJuego extends StatefulWidget {
 }
 
 class _PaginaJuegoState extends State<PaginaJuego> {
+  BDHelper bdHelper=BDHelper();
   Map<String,dynamic> _marcador= {
       "Jugador Local":"Jugador 1",
       "Jugador Visitante":"Jugador 2",
@@ -23,6 +25,20 @@ class _PaginaJuegoState extends State<PaginaJuego> {
       "Puntos Locales":"0",
       "Puntos Visitantes":"0"
       };
+   Map<String,dynamic> _BDResultado= {
+      "jugador1":"Jugador 1",
+      "jugador2":"Jugador 2",
+      "j1set1":"0",
+      "j1set2":"0",
+      "j1set3":"0",
+      "j1set4":"0",
+      "j1set5":"0",
+      "j2set1":"0",
+      "j2set2":"0",
+      "j2set3":"0",
+      "j2set4":"0",
+      "j2set5":"0",
+      };      
       int _numSets=3;
       var partido;
       bool _partidoFinalizado=false;
@@ -37,6 +53,7 @@ class _PaginaJuegoState extends State<PaginaJuego> {
     _marcador["Jugador Visitante"]=widget.configuracion["Jugador 2"].toString();
     _numSets=int.parse(widget.configuracion["Sets"].toString());
     partido=Partido(numSets: _numSets, jugadorLocal: _marcador["Jugador Local"], jugadorVisitante: _marcador["Jugador Visitante"]);
+
   }
   @override
   Widget build(BuildContext context) {
@@ -155,7 +172,6 @@ class _PaginaJuegoState extends State<PaginaJuego> {
                     
                       ),),
                   ],
-            
             ),
         ),
       ),
@@ -189,6 +205,21 @@ class _PaginaJuegoState extends State<PaginaJuego> {
                   setState(() {});
                   break;
                 default:
+              }
+              if(_partidoFinalizado){
+                _BDResultado["jugador1"]=_marcador["Jugador Local"];
+                _BDResultado["jugador2"]=_marcador["Jugador Visitante"];
+                _BDResultado["j1set1"]=_marcador["Set"][0]["Juegos Locales"];
+                _BDResultado["j1set2"]=_marcador["Set"][1]["Juegos Locales"];
+                _BDResultado["j1set3"]=_marcador["Set"][2]["Juegos Locales"];
+                _BDResultado["j1set4"]=_marcador["Set"][3]["Juegos Locales"];
+                _BDResultado["j1set5"]=_marcador["Set"][4]["Juegos Locales"];
+                _BDResultado["j2set1"]=_marcador["Set"][0]["Juegos Visitantes"];
+                _BDResultado["j2set2"]=_marcador["Set"][1]["Juegos Visitantes"];
+                _BDResultado["j2set3"]=_marcador["Set"][2]["Juegos Visitantes"];
+                _BDResultado["j2set4"]=_marcador["Set"][3]["Juegos Visitantes"];
+                _BDResultado["j2set5"]=_marcador["Set"][4]["Juegos Visitantes"];
+                bdHelper.insertarBD("resultados", _BDResultado);
               }
              }
           else{
