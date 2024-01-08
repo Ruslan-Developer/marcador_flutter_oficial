@@ -20,7 +20,7 @@ class PaginaHistorico extends StatelessWidget {
               itemCount: snapshot.data!.length,
               itemBuilder: (context, index) {
                 return ListTile(
-                  title: Text(snapshot.data![index]["jugador1"]+" vs "+snapshot.data![index]["jugador2"]),
+                  title: Text("id: "+snapshot.data![index]["id"].toString()+" "+snapshot.data![index]["jugador1"]+" vs "+snapshot.data![index]["jugador2"]),
                   subtitle: Row(
                     children: [
                       Text(snapshot.data![index]["j1set1"]+"-"+snapshot.data![index]["j2set1"]+" "+
