@@ -1,4 +1,7 @@
+import 'dart:io';
+
 import 'package:sqflite/sqflite.dart';
+import 'package:path/path.dart';
 import 'package:path/path.dart';
 //helper para la base de datos
 class BDHelper{
@@ -22,6 +25,7 @@ class BDHelper{
   }
 
   //consulta con sql
+  ///Permite consultar la base de datos con sentencias SQL
   Future<List<Map<String, dynamic>>> consultarSQL(String sql) async{
     Database? bd = await baseDatos;
     var resultado = await bd!.rawQuery(sql);
@@ -30,7 +34,7 @@ class BDHelper{
 
   //insertar datos en la base de datos
   Future<int> insertarBD(String tabla, Map<String, dynamic> fila) async{
-    Database? bd = await baseDatos;
+    Database? bd= await baseDatos;
     var resultado = await bd!.insert(tabla, fila);
     return resultado;
   }
@@ -74,4 +78,6 @@ class BDHelper{
       );
     return baseDatos;
   }
+
+
 }

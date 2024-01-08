@@ -1,9 +1,12 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:marcador_flutter/paginas/loading.dart';
 import 'package:marcador_flutter/paginas/pagina_principal.dart';
 
 void main() {
   runApp(MyApp());
+  
 }
 
 class MyApp extends StatelessWidget {
@@ -32,4 +35,7 @@ class MyApp extends StatelessWidget {
       //home: PaginaPrincipal(configuracion: configuracion,),
     );
   }
+   
+  
+
 }
